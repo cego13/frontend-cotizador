@@ -1,0 +1,90 @@
+.admin-notes-page {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+.admin-notes-page h3 {
+  text-align: center;
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+.admin-notes-page input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.admin-notes-page input[type="text"]:focus {
+  border-color: #1b5e20;
+  box-shadow: 0 0 5px rgba(27, 94, 32, 0.3);
+}
+
+.admin-notes-page button {
+  background-color: #1b5e20;
+  color: white;
+  border: none;
+  padding: 9px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.admin-notes-page button:hover {
+  background-color: #2e7d32;
+}
+
+.admin-notes-page ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.admin-notes-page li {
+  background: #f8f9f9;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+}
+
+.admin-notes-page li:hover {
+  background: #eef6ee;
+}
+
+.admin-notes-page li button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.admin-notes-page li button:nth-child(2) {
+  background-color: #ff7043; /* editar */
+}
+
+.admin-notes-page li button:nth-child(2):hover {
+  background-color: #f4511e;
+}
+
+.admin-notes-page li button:nth-child(3) {
+  background-color: #d32f2f; /* eliminar */
+}
+
+.admin-notes-page li button:nth-child(3):hover {
+  background-color: #b71c1c;
+}

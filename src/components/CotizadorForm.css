@@ -1,0 +1,142 @@
+/* CotizadorForm.css */
+
+/* Contenedor general */
+.cotizador-form {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Helvetica', sans-serif;
+}
+
+/* Títulos y subtítulos */
+.cotizador-form h3 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cotizador-form h4 {
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Labels y inputs */
+.cotizador-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cotizador-form input[type="text"],
+.cotizador-form input[type="number"],
+.cotizador-form select,
+.cotizador-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Textarea personalizado */
+.cotizador-form textarea {
+  resize: vertical;
+}
+
+/* Botones */
+.cotizador-form button {
+  background-color: #1b5e20;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.cotizador-form button:hover {
+  background-color: #145214;
+}
+
+/* Tabla de items */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.company-table th, .company-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.company-table th {
+  background-color: #1b5e20;
+  color: white;
+  text-align: left;
+}
+
+.company-table input,
+.company-table textarea {
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Totales */
+.totals {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 16px;
+}
+
+.totals p {
+  margin: 3px 0;
+}
+
+/* Tabla de cotizaciones existentes */
+.quotation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.quotation-table th,
+.quotation-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.quotation-table th {
+  background-color: #1b5e20;
+  color: white;
+}
+
+.quotation-table button {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+/* Botón de eliminar ítem */
+.company-table td button {
+  background-color: #c62828;
+  padding: 5px 8px;
+}
+
+.company-table td button:hover {
+  background-color: #8e0000;
+}

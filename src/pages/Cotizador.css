@@ -1,0 +1,48 @@
+.cotizador-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.cotizador-form input,
+.cotizador-form select,
+.cotizador-form textarea {
+  width: 100%;
+  padding: 6px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cotizador-form table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.cotizador-form th, .cotizador-form td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+}
+
+.cotizador-form button {
+  margin-top: 10px;
+  background: #1b5e20;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cotizador-form button:hover {
+  background: #2e7d32;
+}
+
+.totals {
+  margin-top: 1rem;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 6px;
+}
