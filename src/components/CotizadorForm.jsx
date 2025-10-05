@@ -133,7 +133,7 @@ export default function CotizadorForm() {
     resetForm();
 
     if (!editingId && result._id) {
-      const pdfUrl = `http://localhost:4000/api/quotations/${result._id}/pdf`;
+       const pdfUrl = `${import.meta.env.VITE_API_URL}/api/quotations/${result._id}/pdf`;
       window.open(pdfUrl, "_blank");
     }
   };
@@ -161,8 +161,8 @@ export default function CotizadorForm() {
   };
 
   const handleViewPDF = (id) => {
-    const pdfUrl = `http://localhost:4000/api/quotations/${id}/pdf`;
-    window.open(pdfUrl, "_blank");
+    const pdfUrl = `${import.meta.env.VITE_API_URL}/api/quotations/${id}/pdf`;
+    window.open(pdfUrl);
   };
 
   return (
