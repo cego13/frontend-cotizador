@@ -76,77 +76,72 @@ export default function CotizadorForm() {
   
   // --- enviar al backend
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const hasValidNote = activeNotes.some(note => note.text.trim().length > 0);
-    
-    if (!selectedCompany || !selectedClient || !quotationNumber || !hasValidNote) {
-      alert("Debes llenar el número de cotización, empresa, cliente y añadir al menos una nota.");
-      return;
-    }
+  // Verificar campos obligatorios
+  if (!selectedCompany || !selectedClient || !quotationNumber) {
+    alert("Debes llenar el número de cotización, empresa y cliente.");
+    return;
+  }
 
-    if (items.length === 0) {
-      alert("Debe haber al menos un ítem.");
-      return;
-    }
+  if (items.length === 0) {
+    alert("Debe haber al menos un ítem.");
+    return;
+  }
 
-    // CONCATENAR TODAS LAS NOTAS EN UN SOLO STRING
-    const finalNotesText = activeNotes
-        .map(note => note.text.trim())
-        .filter(text => text.length > 0)
-        .join("\n\n"); 
-    
-    if (!finalNotesText) {
-         alert("La nota final está vacía. Por favor, añade texto a las notas.");
-         return;
-    }
+  // Concatenar notas si existen
+  const finalNotesText = activeNotes
+    .map(note => note.text.trim())
+    .filter(text => text.length > 0)
+    .join("\n\n");
 
-    const payload = {
-      quotationNumber,
-      company: selectedCompany,
-      client: selectedClient,
-      items: items.map(it => ({
-        description: it.description,
-        longDescription: it.longDescription,
-        quantity: it.quantity,
-        unitPrice: it.unitPrice,
-        total: it.quantity * it.unitPrice
-      })),
-      subtotal,
-      iva,
-      total,
-      notes: finalNotesText, // Usar el string concatenado
-      customMessage
-    };
+  // Crear el objeto para enviar al backend
+  const payload = {
+    quotationNumber,
+    company: selectedCompany,
+    client: selectedClient,
+    items: items.map(it => ({
+      description: it.description,
+      longDescription: it.longDescription,
+      quantity: it.quantity,
+      unitPrice: it.unitPrice,
+      total: it.quantity * it.unitPrice
+    })),
+    subtotal,
+    iva,
+    total,
+    notes: finalNotesText || "", // ✅ permitir vacío
+    customMessage
+  };
 
+  try {
     let result;
+
     if (editingId) {
+      // 🟡 Actualizar cotización existente
       result = await updateQuotation(editingId, payload);
-      alert("Cotización actualizada correctamente ✅");
+      alert("Cotización actualizada correctamente");
     } else {
+      // 🟢 Crear nueva cotización
       result = await createQuotation(payload);
-      alert("Cotización creada correctamente ✅");
+      alert("Cotización creada correctamente");
+
+      // 🧾 Abrir PDF automáticamente después de crear
+      if (result._id) {
+        const pdfUrl = `${import.meta.env.VITE_API_URL || "http://localhost:4000/api"}/api/quotations/${result._id}/pdf`;
+        window.open(pdfUrl, "_blank");
+      }
     }
 
-    const q = await getQuotations();
-    setQuotations(q);
-    resetForm();
+    // 🔄 Refrescar lista de cotizaciones
+    const updatedQuotations = await getQuotations();
+    setQuotations(updatedQuotations);
+  } catch (error) {
+    console.error("Error al guardar cotización:", error);
+  }
+};
 
-    if (!editingId && result._id) {
-       const pdfUrl = `${import.meta.env.VITE_API_URL}/api/quotations/${result._id}/pdf`;
-      window.open(pdfUrl, "_blank");
-    }
-  };
-
-  const resetForm = () => {
-    setItems([]);
-    setQuotationNumber("");
-    setCustomMessage("");
-    setSelectedCompany("");
-    setSelectedClient("");
-    setActiveNotes([]); // Resetear el array de notas
-    setEditingId(null);
-  };
+  
 
   const handleEdit = (quotation) => {
     setEditingId(quotation._id);
@@ -200,7 +195,7 @@ export default function CotizadorForm() {
         
         {/* --- Sección de Ítems (Primer orden) --- */}
         <h4>Ítems</h4>
-        <table className="company-table">
+        <table className=" quotation-table td">
           <thead>
             <tr>
               <th>Descripción</th>

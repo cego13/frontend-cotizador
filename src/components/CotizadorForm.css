@@ -1,6 +1,4 @@
-/* CotizadorForm.css */
-
-/* Contenedor general */
+/* 🎯 Contenedor general */
 .cotizador-form {
   max-width: 900px;
   margin: 40px auto;
@@ -11,7 +9,7 @@
   font-family: 'Helvetica', sans-serif;
 }
 
-/* Títulos y subtítulos */
+/* Títulos */
 .cotizador-form h3 {
   color: #1b5e20;
   margin-bottom: 20px;
@@ -27,11 +25,10 @@
   justify-content: space-between;
 }
 
-/* Labels y inputs */
+/* Labels e inputs */
 .cotizador-form label {
   display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 10px;
   font-weight: bold;
   color: #333;
 }
@@ -46,11 +43,6 @@
   border: 1px solid #ccc;
   font-size: 14px;
   box-sizing: border-box;
-}
-
-/* Textarea personalizado */
-.cotizador-form textarea {
-  resize: vertical;
 }
 
 /* Botones */
@@ -70,17 +62,19 @@
   background-color: #145214;
 }
 
-/* Tabla de items */
+/* Tabla de ítems */
 .company-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  table-layout: fixed; /* ✅ mantiene columnas alineadas */
 }
 
 .company-table th, .company-table td {
   border: 1px solid #ddd;
   padding: 8px;
   font-size: 14px;
+  vertical-align: top;
 }
 
 .company-table th {
@@ -94,6 +88,18 @@
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Botón eliminar ítem */
+.company-table td button {
+  background-color: #c62828;
+  padding: 5px 8px;
+}
+
+.company-table td button:hover {
+  background-color: #8e0000;
 }
 
 /* Totales */
@@ -119,6 +125,7 @@
   border: 1px solid #ddd;
   padding: 10px;
   font-size: 14px;
+  text-align: left;
 }
 
 .quotation-table th {
@@ -129,14 +136,91 @@
 .quotation-table button {
   padding: 5px 10px;
   font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-/* Botón de eliminar ítem */
-.company-table td button {
-  background-color: #c62828;
-  padding: 5px 8px;
-}
+/* 🟢 Responsive */
+@media (max-width: 768px) {
+  .cotizador-form {
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 14px;
+  }
 
-.company-table td button:hover {
-  background-color: #8e0000;
+  
+
+  .cotizador-form h3, 
+  .cotizador-form h4 {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .cotizador-form input,
+  .cotizador-form select,
+  .cotizador-form textarea,
+  .cotizador-form button {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  /* 🔹 Contenedor con scroll horizontal para tablas */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 🔹 Estilo para las tablas dentro del contenedor */
+  .table-responsive table { /* ancho fijo para permitir el scroll */
+     width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    font-size: 13px;
+    padding: 6px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  /* Totales centrados */
+  .totals {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  hr {
+    margin: 15px 0;
+  }
+
+  /* Notas */
+  .cotizador-form textarea {
+    min-height: 80px;
+  }
+
+  /* 🔹 Tabla de cotizaciones también con scroll */
+  .quotation-table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+
+  .quotation-table th,
+  .quotation-table td {
+    padding: 8px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .quotation-table button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }

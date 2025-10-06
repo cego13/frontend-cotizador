@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Company.css";
 
 const initialForm = {
   name: "",

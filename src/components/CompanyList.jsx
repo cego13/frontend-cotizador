@@ -1,7 +1,10 @@
+import "./Company.css";
+
 export default function CompanyList({ companies, onEdit, onDelete }) {
   if (!companies.length) return <p>No hay empresas registradas.</p>;
 
   return (
+    <div className="company-table-container">
     <table className="company-table">
       <thead>
         <tr>
@@ -23,11 +26,12 @@ export default function CompanyList({ companies, onEdit, onDelete }) {
             <td>{c.representative.position}</td>
             <td>
               <button className="edit" onClick={() => onEdit(c)}>Editar</button>
-              <button className="delete" onClick={() => onDelete(c._id)}>Eliminar</button>
+              <button  onClick={() => onDelete(c._id)}>Eliminar</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
