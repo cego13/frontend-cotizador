@@ -142,9 +142,6 @@ export default function CotizadorForm() {
   }
 };
 
-
-  
-
   const handleEdit = (quotation) => {
     setEditingId(quotation._id);
     setQuotationNumber(quotation.quotationNumber);
@@ -157,10 +154,11 @@ export default function CotizadorForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleViewPDF = (id) => {
-    const pdfUrl = `${import.meta.env.VITE_API_URL}/api/quotations/${id}/pdf`;
-    window.open(pdfUrl);
-  };
+ const handleViewPDF = (id) => {
+  const timestamp = new Date().getTime(); // ✅ Número único para evitar cache
+  const pdfUrl = `${import.meta.env.VITE_API_URL || "http://localhost:4000/api"}/api/quotations/${id}/pdf?ts=${timestamp}`;
+  window.open(pdfUrl, "_blank");
+};
 
   return (
     <div>
