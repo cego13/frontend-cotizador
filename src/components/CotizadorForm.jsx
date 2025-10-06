@@ -110,7 +110,7 @@ export default function CotizadorForm() {
     subtotal,
     iva,
     total,
-    notes: finalNotesText || "", // ✅ permitir vacío
+    notes: finalNotesText || "",
     customMessage
   };
 
@@ -128,7 +128,8 @@ export default function CotizadorForm() {
 
       // 🧾 Abrir PDF automáticamente después de crear
       if (result._id) {
-        const pdfUrl = `${import.meta.env.VITE_API_URL || "http://localhost:4000/api"}/api/quotations/${result._id}/pdf`;
+        const timestamp = new Date().getTime(); // ✅ Número único para evitar cache
+        const pdfUrl = `${import.meta.env.VITE_API_URL || "http://localhost:4000/api"}/api/quotations/${result._id}/pdf?ts=${timestamp}`;
         window.open(pdfUrl, "_blank");
       }
     }
@@ -140,6 +141,7 @@ export default function CotizadorForm() {
     console.error("Error al guardar cotización:", error);
   }
 };
+
 
   
 
