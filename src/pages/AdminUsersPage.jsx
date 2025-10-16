@@ -13,7 +13,7 @@ export default function AdminUsersPage() {
   const [editingUser, setEditingUser] = useState(null);
   const token = localStorage.getItem("token");
 
-  const API_URL = "http://localhost:4000/api/users";
+ const API_URL = `${import.meta.env.VITE_API_URL}/api/users`;
 
   // Cargar lista de usuarios
   const loadUsers = async () => {
