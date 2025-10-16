@@ -1,0 +1,179 @@
+.admin-users-page {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.admin-users-page h1 {
+  text-align: center;
+  color: #1b5e20;
+  margin-bottom: 30px;
+  font-size: 26px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+/* ===== FORMULARIO ===== */
+.user-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 40px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.user-form h2 {
+  width: 100%;
+  color: #1b5e20;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.user-form input,
+.user-form select {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.user-form input:focus,
+.user-form select:focus {
+  border-color: #1b5e20;
+  box-shadow: 0 0 5px rgba(27, 94, 32, 0.3);
+}
+
+.user-form button {
+  background-color: #1b5e20;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.user-form button:hover {
+  background-color: #2e7d32;
+}
+
+.user-form button:active {
+  transform: scale(0.98);
+}
+
+/* Botón cancelar */
+.user-form .cancel-button {
+  background-color: #9e9e9e;
+}
+
+.user-form .cancel-button:hover {
+  background-color: #757575;
+}
+
+/* ===== TABLA ===== */
+.admin-users-page table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admin-users-page th,
+.admin-users-page td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-users-page th {
+  background-color: #f1f8f1;
+  color: #1b5e20;
+  font-weight: 600;
+}
+
+.admin-users-page tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* ===== BOTONES DE ACCIÓN ===== */
+.admin-users-page table button {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: 0.2s;
+}
+
+.admin-users-page table button:hover {
+  transform: scale(1.05);
+}
+
+/* Editar */
+.admin-users-page table button:first-child {
+  background-color: #ffb300;
+  color: #fff;
+}
+
+.admin-users-page table button:first-child:hover {
+  background-color: #ffa000;
+}
+
+/* Eliminar */
+.admin-users-page table button:last-child {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.admin-users-page table button:last-child:hover {
+  background-color: #b71c1c;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .admin-users-page {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .user-form {
+    flex-direction: column;
+  }
+
+  .user-form input,
+  .user-form select,
+  .user-form button {
+    width: 100%;
+  }
+
+  .admin-users-page table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .admin-users-page table th,
+  .admin-users-page table td {
+    padding: 10px;
+  }
+
+  .admin-users-page h1 {
+    font-size: 22px;
+  }
+}
