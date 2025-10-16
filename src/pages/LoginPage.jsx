@@ -10,13 +10,17 @@ export default function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/login", {
-        email,
-        password,
-      });
+      // ✅ Usando la variable de entorno VITE_API_URL
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        { email, password }
+      );
 
+      // Guardar token y usuario en localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // Redirigir al inicio
       window.location.href = "/";
     } catch (err) {
       setError(err.response?.data?.message || "Error al iniciar sesión");
@@ -52,7 +56,9 @@ export default function LoginPage() {
 
         {error && <p className="login-error">{error}</p>}
 
-        <p className="login-footer">© 2025 Cotizador. Todos los derechos reservados.</p>
+        <p className="login-footer">
+          © 2025 Cotizador. Todos los derechos reservados.
+        </p>
       </div>
     </div>
   );
